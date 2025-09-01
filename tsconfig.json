@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",          // JavaScript version for output
+    "module": "NodeNext",        // Use Node's ESM support
+    "outDir": "./dist",          // Where compiled JS goes
+    "rootDir": "./src",          // Where TS source files live
+    "strict": true,              // Enable strict type checking
+    "esModuleInterop": true,     // For importing CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,         // Skip type checking of dependencies
+    "types": ["node"]
+  },
+  "include": ["src/**/*"],       // Which files to compile
+  "exclude": ["node_modules"]    // Files to ignore
+}

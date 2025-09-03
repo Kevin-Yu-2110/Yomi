@@ -17,16 +17,17 @@ CREATE TABLE decks (
     updated_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE flashcards_master (
+CREATE TABLE flashcards (
     id SERIAL PRIMARY KEY,
-    front TEXT NOT NULL,
-    back TEXT NOT NULL,
-    UNIQUE(front, back)
+    kanji TEXT,
+    reading TEXT NOT NULL,
+    meaning TEXT NOT NULL,
+    UNIQUE(kanji, reading, meaning)
 );
 
-CREATE TABLE deck_flashcards (
+CREATE TABLE deck_flashcard_relations (
     deck_id INT REFERENCES decks(id) ON DELETE CASCADE,
-    flashcard_id INT REFERENCES flashcards_master(id) ON DELETE CASCADE,
+    flashcard_id INT REFERENCES flashcards(id) ON DELETE CASCADE,
     PRIMARY KEY(deck_id, flashcard_id)
 );
 

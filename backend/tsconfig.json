@@ -1,35 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "lib": ["ES2020"],                   
-    "strict": true,
-    "baseUrl": "./",
-    "esModuleInterop": true,                 
-    "skipLibCheck": true,                     
+    "target": "ES2024",          // JavaScript version for output
+    "module": "NodeNext",        // Use Node's ESM support
+    "outDir": "./dist",          // Where compiled JS goes
+    "rootDir": "./src",          // Where TS source files live
+    "strict": true,              // Enable strict type checking
+    "esModuleInterop": true,     // For importing CommonJS modules
     "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@src/*": ["src/*"]
-    },
-    "useUnknownInCatchVariables": false,
-    "types": ["vitest/globals"],
+    "skipLibCheck": true,         // Skip type checking of dependencies
+    "types": ["node"]
   },
-  "ts-node": {
-    "swc": true,
-    "require": [
-      "tsconfig-paths/register",
-      "./config.ts"
-    ],
-  },
-  "include": [
-    "src/**/*.ts",
-    "tests/**/*.ts",
-    "config.ts",
-    "scripts",
-    "eslint.config.ts",
-    "vitest.config.mts"
-  ],
-  "exclude": [
-    "src/public/*"
-  ]
+  "include": ["src/**/*"],       // Which files to compile
+  "exclude": ["node_modules"]    // Files to ignore
 }

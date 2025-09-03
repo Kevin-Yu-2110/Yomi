@@ -3,6 +3,5 @@ node_modules/
 dist/
 .venv/
 JMdict_e.xml
-*.env.*
 
 

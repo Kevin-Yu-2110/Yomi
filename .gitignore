@@ -1,5 +1,8 @@
 node_modules/
 .DS_Store
 dist/
+.venv/
+JMdict_e.xml
+*.env.*
 
 

@@ -1,6 +1,8 @@
-import express, { Request, Response, NextFunction } from 'express'
+import express from 'express'
 import morgan from 'morgan'
-import apiRouter from './routes/index.js'
+import apiRouter from './routers/index.js'
+import authRouter from './routers/authRouter.js'
+import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 
@@ -10,14 +12,14 @@ if (process.env.NODE_ENV === 'dev') {
   app.use(morgan('dev'));
 }
 
+//mount
+app.use('/api', authRouter);
+
+//TODO: auth validation middlware here
+
 app.use('/api', apiRouter);
 
-//error handling - after router
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
-  console.error("Error handler caught:", err.message);
-  res.status(500).json({ error: err.message });
-});
+//error handler at the bottom
+app.use(errorHandler)
 
 export default app;
